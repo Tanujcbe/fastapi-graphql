@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from strawberry.fastapi import GraphQLRouter
 import strawberry
-
+from mock_db import users
 
 app = FastAPI(
     title="FastAPI App",
@@ -27,6 +27,7 @@ async def health_check():
 class Query:
     @strawberry.field
     def hello_world(self)->str:
+        print([user["name"] for user in users])
         return "Hellow World"
 
 schema = strawberry.Schema(query=Query)
