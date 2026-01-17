@@ -21,4 +21,5 @@ class Mutation:
             "is_married": is_married
         }
         users.append(new_user)
+        print(users)
         return True
